@@ -32,16 +32,20 @@ module.exports = function(grunt)
         var cmdPath = data.smartspritePath || '"' + binPath + '"';
         var rootPath = path.resolve(data.rootPath);
         var outputPath = path.resolve(data.outputPath);
-        var callback = _.isFunction(data.callback) ? data.callback : function() {}
+        var callback = _.isFunction(data.callback) ? data.callback : function() {};
         var suffix = data.cssFileSuffix || '""';
 
-        var command = command = cmdPath + ' --root-dir-path "' + rootPath + '" --output-dir-path "' + outputPath + '" --css-file-suffix ' + suffix;
+        var command = cmdPath + ' --root-dir-path "' + rootPath + '" --output-dir-path "' + outputPath + '" --css-file-suffix ' + suffix;
         
         var done = this.async();
         var childProcess = cp.exec(command, null, callback);
 
-        stdout && childProcess.stdout.on('data', function (data) { log.error('stdout:' + data) });
-        stderr && childProcess.stderr.on('data', function (data) { log.error('stderr:' + data); });
+        if (stdout) {
+            childProcess.stdout.on('data', function (data) { log.error('stdout:' + data); });
+        }
+        if (stderr) {
+            childProcess.stderr.on('data', function (data) { log.error('stderr:' + data); });
+        }
 
         childProcess.on('exit', function(code)
         {

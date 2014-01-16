@@ -1,0 +1,22 @@
+
+
+.a {
+  background-image: url('./sprites.png');
+  background-position: left -0px;
+  background-repeat: no-repeat;
+  height: 64px;
+}
+
+.abc {
+  background-image: url('./sprites.png');
+  background-position: left -64px;
+  background-repeat: no-repeat;
+  height: 64px;
+}
+
+.abcd {
+  background-image: url('./sprites.png');
+  background-position: left -128px;
+  background-repeat: no-repeat;
+  height: 64px;
+}

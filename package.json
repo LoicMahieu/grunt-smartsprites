@@ -18,19 +18,25 @@
     "node": ">= 0.8.0"
   },
   "dependencies": {
-    "grunt": "~0.4.0"
+    "clean-css": "~2.0.0",
+    "grunt-lib-contrib": "~0.6.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.0"
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-nodeunit": "~0.2.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-internal": "~0.4.6",
+    "grunt": "~0.4.1",
+    "grunt-release": "~0.6.0"
   },
   "peerDependencies": {
-    "grunt": "~0.4.0"
+    "grunt": "~0.4.1"
   },
   "keywords": [
     "gruntplugin",
     "smartsprite"
   ],
-  "contributors": [
-  ],
-  "readme": "ERROR: No README data found!"
+  "scripts": {
+    "test": "grunt test"
+  }
 }
