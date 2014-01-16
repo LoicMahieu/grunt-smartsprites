@@ -27,16 +27,19 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     smartsprites: {
       main: {
-          // smartspritePath : 'smartsprites.cmd',
-          rootPath: 'test/fixtures',
-          outputPath: 'tmp',
-          cssFileSuffix: '',
-          stdout: true,
-          stderr: true,
-          callback: function()
-          {
-              grunt.log.writeln('smartsprite exec successfully.');
-          }
+        rootPath: 'test/fixtures/simple',
+        outputPath: 'tmp/simple',
+        cssFileSuffix: '',
+        stdout: true,
+        stderr: true
+      },
+      absolute: {
+        rootPath: 'test/fixtures/absolute',
+        outputPath: 'tmp/absolute',
+        cssFileSuffix: '',
+        documentRootDirPath: 'test/fixtures',
+        stdout: true,
+        stderr: true
       }
     },
 

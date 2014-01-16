@@ -33,6 +33,7 @@ smartsprites:
         rootPath: config.src + 'style/source/',
         outputPath: config.src +  'style/',
         cssFileSuffix: '',
+        documentRootDirPath: '',
         stdout: true,
         stderr: true,
         callback: function()

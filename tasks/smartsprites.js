@@ -34,8 +34,14 @@ module.exports = function(grunt)
         var outputPath = path.resolve(data.outputPath);
         var callback = _.isFunction(data.callback) ? data.callback : function() {};
         var suffix = data.cssFileSuffix || '""';
+        var documentRootDirPath = data.documentRootDirPath || '""';
 
-        var command = cmdPath + ' --root-dir-path "' + rootPath + '" --output-dir-path "' + outputPath + '" --css-file-suffix ' + suffix;
+        var command = cmdPath + ' ' + ([
+            '--root-dir-path "' + rootPath + '"',
+            '--output-dir-path "' + outputPath + '"',
+            '--css-file-suffix  "' + suffix + '"',
+            '--document-root-dir-path  "' + documentRootDirPath + '"',
+        ]).join(' ');
         
         var done = this.async();
         var childProcess = cp.exec(command, null, callback);

@@ -1,0 +1,20 @@
+
+/** sprite: icons; sprite-image: url('./sprites.png'); sprite-layout: vertical */
+
+.a {
+  background-image: url('../images/a.png'); /** sprite-ref: icons; */
+  background-repeat: no-repeat;
+  height: 64px;
+}
+
+.abc {
+  background-image: url('../images/abc.png'); /** sprite-ref: icons; */
+  background-repeat: no-repeat;
+  height: 64px;
+}
+
+.abcd {
+  background-image: url('../images/abcd.png'); /** sprite-ref: icons; */
+  background-repeat: no-repeat;
+  height: 64px;
+}
