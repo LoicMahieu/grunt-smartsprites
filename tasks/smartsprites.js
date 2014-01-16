@@ -27,11 +27,14 @@ module.exports = function(grunt)
         }
         var stdout = data.stdout !== undefined ? data.stdout : true;
         var stderr = data.stderr !== undefined ? data.stderr : true;
-        var cmdPath = data.smartspritePath || '"' +  path.resolve('') + '/node_modules/grunt-contrib-smartsprites/smartsprites-0.2.9/smartsprites.cmd"';
+        var isWin = /^win/.test(process.platform);
+        var binPath = __dirname + "/../smartsprites-0.2.9/smartsprites." + (isWin ? 'cmd' : 'sh');
+        var cmdPath = data.smartspritePath || '"' + binPath + '"';
         var rootPath = path.resolve(data.rootPath);
         var outputPath = path.resolve(data.outputPath);
         var callback = _.isFunction(data.callback) ? data.callback : function() {}
         var suffix = data.cssFileSuffix || '""';
+
         var command = command = cmdPath + ' --root-dir-path "' + rootPath + '" --output-dir-path "' + outputPath + '" --css-file-suffix ' + suffix;
         
         var done = this.async();
