@@ -25,7 +25,7 @@ grunt-contrib-smartsprites
 
 ```js
 //grunt smartsprite
-smartsprite: 
+smartsprites: 
 {
     dev: 
     {
