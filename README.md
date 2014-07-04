@@ -2,109 +2,35 @@ grunt-contrib-smartsprites
 =========================
 
 
-> 本程序基于 https://github.com/carrotsearch/smartsprites
+> Grunt task for [smartsprites](https://github.com/carrotsearch/smartsprites)
 
 
-## 依赖环境
+## Dependencies
 
 *  java    `~jre 1.6`  
-*  nodejs  `不确定，个人环境是 windows v0.10.15 `
-*  nodejs  `~0.4.0`
-
-## 推荐
-
-* 也许你需要这个 https://github.com/twoer/grunt-contrib-less-smartsprites 
+*  nodejs  `>= 0.8.0`
+*  grunt  `>= 0.4.0`
 
 
-## 使用方法：
+## Usage
 
 `npm install grunt-contrib-smartsprites --save-dev`
 
-`grunt.loadNpmTasks('grunt-contrib-smartsprites');`
-
 
 ```js
-//grunt smartsprite
-smartsprites: 
-{
-    dev: 
-    {
+smartsprites: {
+    dev: {
         // smartspritePath : 'smartsprites.cmd',
-        rootPath: config.src + 'style/source/',
-        outputPath: config.src +  'style/',
+        rootDirPath: config.src + 'style/source/',
+        outputDirPath: config.src +  'style/',
         cssFileSuffix: '',
         documentRootDirPath: '',
         stdout: true,
         stderr: true,
-        callback: function()
-        {
+        callback: function () {
             grunt.log.writeln('smartsprite exec successfully.');
         }
     }
 }
 ```
-
-#### smartspritePath
-Type: `String`  
-smartsprite 路径，当前已经包含 `smartsprites-0.2.9` ，默认会使用此目录的 smartsprite
-
-
-#### rootPath
-Type: `String` 
-包含 smartsprite tag 的 css 文件夹路径
-
-
-#### outputPath
-Type: `String` 
-smartsprite 执行输出 css 文件夹路径
-
-#### cssFileSuffix
-Type: `String` 
-生成的 css 文件后缀
-
-
-#### stdout
-Type: `Boolean` 
-是否显示标准输出
-
-
-#### stderr
-Type: `Boolean`
-是否显示错误输出
-
-
-#### callback
-Type: `Function`
-执行完成回掉
-
-
-
-## 感谢：
-* 整个程序大部分都参考了 https://github.com/jharding/grunt-exec
-* Waitcat
-* TooBug
-* Vincent
-
-
-
-## 最后
-* 新手，程序难免有瑕疵，望大家多包涵，多斧正！
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
