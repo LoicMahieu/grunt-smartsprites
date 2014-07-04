@@ -1,36 +1,35 @@
 {
-  "name": "grunt-contrib-smartsprites",
-  "description": "通过 grunt 调用 smartsprites",
+  "name": "grunt-smartsprites",
+  "description": "Grunt task for smartsprites",
   "version": "0.0.7",
-  "homepage": "https://github.com/twoer/grunt-contrib-smartsprites",
+  "homepage": "https://github.com/loicmahieu/grunt-smartsprites",
   "author": {
-    "name": "zhangkun",
-    "url": "http://cnblogs.com/twoer"
+    "name": "Loic Mahieu",
+    "url": "https://github.com/loicmahieu"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/twoer/grunt-contrib-smartsprites.git"
+    "url": "https://github.com/loicmahieu/grunt-smartsprites.git"
   },
   "bugs": {
-    "url": "https://github.com/twoer/grunt-contrib-smartsprites/issues"
+    "url": "https://github.com/loicmahieu/grunt-smartsprites/issues"
   },
   "engines": {
     "node": ">= 0.8.0"
   },
   "dependencies": {
-    "grunt": "~0.4.1"
+    "underscore.string": "^2.3.3"
   },
   "devDependencies": {
-    "clean-css": "~2.0.0",
-    "grunt-lib-contrib": "~0.6.0",
-    "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-nodeunit": "~0.2.1",
+    "grunt": "~0.4.5",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-internal": "~0.4.6",
-    "grunt-release": "~0.6.0"
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-release": "~0.7.0",
+    "load-grunt-tasks": "^0.6.0"
   },
   "peerDependencies": {
-    "grunt": "~0.4.1"
+    "grunt": "~0.4.5"
   },
   "keywords": [
     "gruntplugin",

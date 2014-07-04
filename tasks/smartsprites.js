@@ -1,70 +1,74 @@
-/*
- * grunt-contrib-smartsprites
- * {%= homepage %}
- *
- * Copyright (c) {%= grunt.template.today('yyyy') %} {%= author_name %}
- * Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.
- */
-
 'use strict';
 
-module.exports = function(grunt)
-{
+module.exports = function(grunt) {
 
     var path = require('path');
     var cp = require('child_process');
     var _ = grunt.util._;
     var f = require('util').format;
     var log = grunt.log;
+    var verbose = grunt.verbose;
+    var _s = require('underscore.string');
 
-    grunt.registerMultiTask('smartsprites', '{%= description %}', function()
-    {
-        var data = this.data;
-        if(!data.rootPath || !data.outputPath)
-        {
-            log.error('rootPath or outputPath is null.');
-            return;
-        }
-        var stdout = data.stdout !== undefined ? data.stdout : true;
-        var stderr = data.stderr !== undefined ? data.stderr : true;
-        var isWin = /^win/.test(process.platform);
-        var binPath = __dirname + "/../smartsprites-0.2.9/smartsprites." + (isWin ? 'cmd' : 'sh');
-        var cmdPath = data.smartspritePath || '"' + binPath + '"';
-        var rootPath = path.resolve(data.rootPath);
-        var outputPath = path.resolve(data.outputPath);
-        var callback = _.isFunction(data.callback) ? data.callback : function() {};
-        var suffix = data.cssFileSuffix || '""';
-        var documentRootDirPath = data.documentRootDirPath || '""';
+    var isWin = /^win/.test(process.platform);
+    var binPath = path.join(
+        __dirname,
+        '..',
+        'smartsprites-0.2.9/smartsprites.' + (isWin ? 'cmd' : 'sh')
+    );
 
-        var command = cmdPath + ' ' + ([
-            '--root-dir-path "' + rootPath + '"',
-            '--output-dir-path "' + outputPath + '"',
-            '--css-file-suffix  "' + suffix + '"',
-            '--document-root-dir-path  "' + documentRootDirPath + '"',
-        ]).join(' ');
-        
+    var availableOptions = [
+        'root-dir-path',
+        'css-files',
+        'output-dir-path',
+        'document-root-dir-path',
+        'log-level',
+        'sprite-png-depth',
+        'sprite-png-ie6',
+        'css-file-encoding',
+        'css-file-suffix'
+    ];
+
+    grunt.registerMultiTask('smartsprites', 'Run smartsprites', function () {
+        var data = _.extend({
+            stdout: true,
+            stderr: true,
+            smartspritePath: binPath,
+            callback: function () {}
+        }, this.data);
+
+        // Provide arguments
+        var args = [];
+        availableOptions.forEach(function (opt) {
+            var camelized = _s.camelize(opt);
+
+            if (data[camelized]) {
+                args.push('--' + opt + ' "' + data[camelized] + '"');
+            }
+        });
+
         var done = this.async();
-        var childProcess = cp.exec(command, null, callback);
+        var child = cp.exec(data.smartspritePath + ' ' + args.join(' '));
 
-        if (stdout) {
-            childProcess.stdout.on('data', function (data) { log.error('stdout:' + data); });
+        verbose.writeln(f('Execute %s %s', data.smartspritePath, args.join(' ')));
+
+        // Pipe std if needed
+        if (data.stdout) {
+            child.stdout.on('data', log.ok.bind(log));
         }
-        if (stderr) {
-            childProcess.stderr.on('data', function (data) { log.error('stderr:' + data); });
+        if (data.stderr) {
+            child.stderr.on('data', log.error.bind(log));
         }
 
-        childProcess.on('exit', function(code)
-        {
-            if (code !== 0)
-            {
+        child.on('exit', function (code) {
+            if (code !== 0) {
                 log.error(f('Exited with code: %d.', code));
                 return done(false);
             }
             log.ok(f('Exited with code: %d.', code));
+            data.callback();
             done();
         });
-
-
     });
 
 

@@ -1,13 +1,7 @@
-/*
- * grunt-contrib-smartsprites
- * https://github.com/twoer/grunt-contrib-smartsprites
- */
-
 'use strict';
 
 module.exports = function(grunt) {
 
-  // Project configuration.
   grunt.initConfig({
     jshint: {
       all: [
@@ -19,6 +13,7 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc'
       }
     },
+
     // Before generating any new files, remove any previously-created files.
     clean: {
       test: ['tmp']
@@ -27,15 +22,15 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     smartsprites: {
       main: {
-        rootPath: 'test/fixtures/simple',
-        outputPath: 'tmp/simple',
+        rootDirPath: 'test/fixtures/simple',
+        outputDirPath: 'tmp/simple',
         cssFileSuffix: '',
         stdout: true,
         stderr: true
       },
       absolute: {
-        rootPath: 'test/fixtures/absolute',
-        outputPath: 'tmp/absolute',
+        rootDirPath: 'test/fixtures/absolute',
+        outputDirPath: 'tmp/absolute',
         cssFileSuffix: '',
         documentRootDirPath: 'test/fixtures',
         stdout: true,
@@ -43,7 +38,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Unit tests.
     nodeunit: {
       tests: ['test/*_test.js']
     }
@@ -53,10 +47,7 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
-  grunt.loadNpmTasks('grunt-release');
+  require('load-grunt-tasks')(grunt);
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
