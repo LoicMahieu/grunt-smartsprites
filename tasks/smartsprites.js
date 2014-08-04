@@ -43,12 +43,12 @@ module.exports = function(grunt) {
             var camelized = _s.camelize(opt);
 
             if (data[camelized]) {
-                args.push('--' + opt + ' "' + data[camelized] + '"');
+                args.push('--' + opt + ' ' + data[camelized] + '');
             }
         });
 
         var done = this.async();
-        var child = cp.exec(data.smartspritePath + ' ' + args.join(' '));
+        var child = cp.execFile(data.smartspritePath, args);
 
         verbose.writeln(f('Execute %s %s', data.smartspritePath, args.join(' ')));
 
