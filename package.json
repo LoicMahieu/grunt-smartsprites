@@ -1,7 +1,7 @@
 {
   "name": "grunt-smartsprites",
   "description": "Grunt task for smartsprites",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/loicmahieu/grunt-smartsprites",
   "author": {
     "name": "Loic Mahieu",
