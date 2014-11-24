@@ -43,7 +43,8 @@ module.exports = function(grunt) {
             var camelized = _s.camelize(opt);
 
             if (data[camelized]) {
-                args.push('--' + opt + ' ' + data[camelized] + '');
+                args.push('--' + opt);
+                args.push(data[camelized]);
             }
         });
 
