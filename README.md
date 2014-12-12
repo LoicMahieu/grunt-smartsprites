@@ -1,5 +1,5 @@
-grunt-contrib-smartsprites
-=========================
+grunt-smartsprites
+==================
 
 
 > Grunt task for [smartsprites](https://github.com/carrotsearch/smartsprites)
@@ -14,7 +14,7 @@ grunt-contrib-smartsprites
 
 ## Usage
 
-`npm install grunt-contrib-smartsprites --save-dev`
+`npm install grunt-smartsprites --save-dev`
 
 
 ```js
