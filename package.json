@@ -29,7 +29,7 @@
     "load-grunt-tasks": "^0.6.0"
   },
   "peerDependencies": {
-    "grunt": "~0.4.5"
+    "grunt": ">=0.4.0"
   },
   "keywords": [
     "gruntplugin",
