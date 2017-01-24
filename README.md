@@ -1,6 +1,8 @@
 grunt-smartsprites
 ==================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/LoicMahieu/grunt-smartsprites.svg)](https://greenkeeper.io/)
+
 
 > Grunt task for [smartsprites](https://github.com/carrotsearch/smartsprites)
 
